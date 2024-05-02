@@ -1,5 +1,6 @@
 const categoryLoader = document.getElementById("categoryLoader");
 const categoryLoaderWrapper = document.querySelector(".simplebar-content");
+const table = document.getElementById("table");
 
 const url = "https://rest.eurotorg.by/10197/Json";
 
@@ -21,6 +22,12 @@ const bodyForCategory = JSON.stringify({
 	],
 });
 
+function deleteLoader(loader) {
+	if (loader) {
+		loader.remove();
+	}
+}
+
 const requestOptionsCategory = {
 	method: "POST",
 	body: bodyForCategory,
@@ -31,17 +38,10 @@ function fetchCategory() {
 	fetch(url, requestOptionsCategory)
 		.then((response) => response.json())
 		.then((result) => {
-			console.log(result);
 			deleteLoader(categoryLoader);
 			createCategoryList(result.Table[0].ProductCategory);
 		})
 		.catch((error) => console.error(error));
-}
-
-function deleteLoader(loader) {
-	if (loader) {
-		loader.remove();
-	}
 }
 
 function createCategoryList(categoryList) {
@@ -82,15 +82,29 @@ export function fetchProduct(SortingId = -1) {
 		redirect: "follow",
 	};
 
+	createTableLoader();
+
 	fetch(url, requestOptionsProduct)
 		.then((response) => response.json())
 		.then((result) => {
+			deleteLoader(table.firstChild);
 			createProducts(result.Table);
 		})
-		.catch((error) => console.error(error));
+		.catch((error) => console.error(error))
+		.finally(() => {});
 }
 
-const table = document.getElementById("table");
+function createTableLoader() {
+	table.innerHTML = `<div class="loader__wrapper">
+						<div id="categoryLoader" class="lds-ring">
+								<div></div>
+								<div></div>
+								<div></div>
+								<div></div>
+								<p>Загрзука товаров ...</p>
+						</div>
+					  </div>`;
+}
 
 function createProducts(productArr) {
 	let tableHTML = "";
@@ -126,7 +140,11 @@ function createProducts(productArr) {
 			<div class="info__price">
 				<div class="price__wrapper">
 					<div class="price__new">${ProductCurrentPrice}</div>
-					<div class="price__old">${ProductOldPrice}</div>
+					${
+						ProductCurrentPrice !== ProductOldPrice
+							? `<div class="price__old">${ProductOldPrice}</div>`
+							: ""
+					}
 				</div>
 				<div class="price__kg">цена за 1кг</div>
 			</div>
@@ -140,10 +158,6 @@ function createProducts(productArr) {
 }
 
 fetchProduct();
-
-const parentElement = document.getElementById("table__product");
-const categorySelect = document.querySelector(".select-category");
-const sortSelect = document.querySelector(".select-sort");
 
 const SettingRequest = {
 	CategoryListId: 101,
@@ -174,7 +188,7 @@ var p = new Proxy(SettingRequest, {
 	set: function (target, prop, value, receiver) {
 		target[prop] = value;
 		console.log("property set: " + prop + " = " + value);
-		fetchData();
+		// fetchData();
 		return true;
 	},
 });
