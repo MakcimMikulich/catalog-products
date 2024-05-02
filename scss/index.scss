@@ -108,7 +108,7 @@ body {
 					border-radius: 16px;
 					border: 1px solid #eef1f5;
 					padding: 16px;
-					overflow-y: auto;
+					// overflow-y: auto;
 
 					.category__title {
 						color: #101010;
@@ -168,7 +168,7 @@ body {
 				top: 0;
 				right: 0;
 				left: 0;
-				bottom: 0;
+				bottom: -20%;
 				transform: translateX(-100%);
 				opacity: 0;
 				transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out,
@@ -194,6 +194,7 @@ body {
 				margin-bottom: 23px;
 
 				.header__title {
+					margin-bottom: 20px;
 					color: #101010;
 					font-size: 18px;
 					font-style: normal;
@@ -295,6 +296,10 @@ body {
 							font-size: 18px;
 							font-weight: 700;
 							line-height: 24px;
+
+							&.hidden {
+								background: #fff;
+							}
 						}
 
 						.header__img {

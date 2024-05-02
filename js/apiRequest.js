@@ -97,6 +97,9 @@ function createProducts(productArr) {
 
 	productArr.forEach((product) => {
 		const productDiscount = product.Price[0].Discount || "-0%";
+		const classNameDiscount = product.Price[0].Discount
+			? "header__discount"
+			: "header__discount hidden";
 		const productImg = product.ImageUrl;
 		const ProductName = product.ProductName;
 		const ProductCurrentPrice =
@@ -105,7 +108,7 @@ function createProducts(productArr) {
 
 		const productHTML = `<div class="table__card card">
 		<div class="card__header">
-			<div class="header__discount">${productDiscount}</div>
+			<div class="${classNameDiscount}">${productDiscount}</div>
 			<div class="header__img">
 				<img
 					width="145" 
