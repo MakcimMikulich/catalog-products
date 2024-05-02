@@ -164,11 +164,11 @@ body {
 			}
 
 			@media (max-width: 768px) {
-				position: absolute;
+				position: fixed;
 				top: 0;
 				right: 0;
 				left: 0;
-				bottom: -20%;
+				bottom: 0;
 				transform: translateX(-100%);
 				opacity: 0;
 				transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out,
