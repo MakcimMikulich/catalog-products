@@ -251,9 +251,6 @@ body.lock {
     margin-bottom: 15px;
   }
 }
-.section__catalog .catalog__wrapper .catalog__content .table__wrapper {
-  min-height: 80vh;
-}
 .section__catalog .catalog__wrapper .catalog__content .table__wrapper .content__table {
   display: flex;
   flex-wrap: wrap;
