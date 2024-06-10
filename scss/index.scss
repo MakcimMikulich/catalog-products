@@ -118,6 +118,10 @@ body {
 							cursor: pointer;
 							padding-right: 10px;
 
+							&.active {
+								color: #6b9431;
+							}
+
 							&:hover {
 								color: #6b9431;
 							}

@@ -48,11 +48,15 @@ function createCategoryList(categoryList) {
 
 	const links = listElement.querySelectorAll(".list__item");
 
+	links[0].classList.add("active");
+
 	links.forEach((link, index) => {
 		link.addEventListener("click", () => {
 			if (settings.CategoryListId !== categoryList[index].CategoryListId) {
 				settings.CategoryListId = categoryList[index].CategoryListId;
 			}
+			links.forEach((el) => el.classList.remove("active"));
+			link.classList.add("active");
 			filterClose();
 		});
 	});

@@ -106,6 +106,9 @@ body.lock {
   cursor: pointer;
   padding-right: 10px;
 }
+.section__catalog .catalog__wrapper .sidebar__wrapper .catalog__sidebar .sidebar__category .category__list .list__item.active {
+  color: #6b9431;
+}
 .section__catalog .catalog__wrapper .sidebar__wrapper .catalog__sidebar .sidebar__category .category__list .list__item:hover {
   color: #6b9431;
 }
