@@ -10,9 +10,11 @@ const filterOpen = () => {
 	document.body.classList.add("lock");
 };
 
-const filterClose = () => {
-	filter.classList.remove("active");
-	document.body.classList.remove("lock");
+export const filterClose = () => {
+	if (filter.classList.contains("active")) {
+		filter.classList.remove("active");
+		document.body.classList.remove("lock");
+	}
 };
 
 button.addEventListener("click", filterOpen);

@@ -124,16 +124,24 @@
 								</button></a
 							>
 						</div>
-						<div id="table" class="content__table"></div>
+						<div class="table__wrapper">
+							<div id="table" class="content__table"></div>
+						</div>
+						<div id="pagination" class="content__pagination">
+							<!-- <div class="pagination__button active">1</div>
+							<div class="pagination__button">2</div> -->
+						</div>
 					</div>
 				</div>
 			</div>
 		</section>
 
-		<div class="product__row" id="table__product"></div>
+		<!-- <div class="product__row" id="table__product"></div> -->
 
 		<script type="module" src="js/apiRequest.js"></script>
+		<script type="module" src="js/category.js"></script>
 		<script type="module" src="js/select.js"></script>
 		<script type="module" src="js/filter.js"></script>
+		<script type="module" src="js/pagination.js"></script>
 	</body>
 </html>

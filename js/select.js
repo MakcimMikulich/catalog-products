@@ -8,7 +8,7 @@
 - Sync both selects values when selecting a option. (native or custom)
 
 */
-import { fetchProduct } from "./apiRequest.js";
+import { fetchProduct, settings } from "./apiRequest.js";
 
 const elSelectNative = document.getElementsByClassName("js-selectNative")[0];
 const elSelectCustom = document.getElementsByClassName("js-selectCustom")[0];
@@ -92,7 +92,7 @@ function updateCustomSelectChecked(value, text) {
 		elOption.classList.add("isActive");
 	}
 	if (optionChecked !== value) {
-		fetchProduct(+value);
+		settings.SortingId = +value;
 	}
 	elSelectCustomBox.textContent = text;
 	optionChecked = value;
