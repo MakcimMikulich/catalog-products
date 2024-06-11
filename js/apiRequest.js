@@ -58,6 +58,7 @@ function createProducts(productArr) {
 	let tableHTML = "";
 
 	productArr.forEach((product) => {
+		console.log(product);
 		const productDiscount = product.Price[0].Discount || "-0%";
 		const classNameDiscount = product.Price[0].Discount
 			? "header__discount"
@@ -67,6 +68,7 @@ function createProducts(productArr) {
 		const ProductCurrentPrice =
 			product.Price[0].PriceRed || product.Price[0].Price;
 		const ProductOldPrice = product.Price[0].Price;
+		const ProductPriceKG = product.Price[0].PriceKg;
 
 		const productHTML = `<div class="table__card card">
 		<div class="card__header">
@@ -79,7 +81,7 @@ function createProducts(productArr) {
 					alt="imgProdcut"
 				/>
 			</div>
-			<span class="header__note">Только до 31.07</span>
+		<span class="header__note">Только до 31.07</span>
 		</div>
 		<div class="card__info">
 			<div class="info__title">
@@ -94,7 +96,9 @@ function createProducts(productArr) {
 							: ""
 					}
 				</div>
-				<div class="price__kg">цена за 1кг</div>
+				<div class="price__kg ${
+					ProductPriceKG === undefined ? "hidden" : ""
+				}">цена за 1кг ${ProductPriceKG}</div>
 			</div>
 		</div>
 	</div>`;

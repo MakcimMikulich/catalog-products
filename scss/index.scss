@@ -335,6 +335,7 @@ body {
 								font-style: normal;
 								font-weight: 700;
 								line-height: 20px;
+								color: #fff;
 							}
 						}
 
@@ -388,6 +389,10 @@ body {
 									font-size: 12px;
 									font-weight: 400;
 									line-height: 16px;
+
+									&.hidden {
+										opacity: 0;
+									}
 								}
 							}
 						}
